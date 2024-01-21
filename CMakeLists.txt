@@ -81,6 +81,8 @@ else ()
     )
 endif()
 
+include(CTest)
+
 
 
 install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
