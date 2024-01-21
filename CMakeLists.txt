@@ -26,35 +26,37 @@ target_link_libraries(helloworld_cli PRIVATE
     helloworld
 )
 
-
-if(WITH_GTEST)
-    include(FetchContent)
-    FetchContent_Declare(
-        googletest
-        URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-    )   
+add_subdirectory(tests )
 
 
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-    FetchContent_MakeAvailable(googletest)
+# if(WITH_GTEST)
+#     include(FetchContent)
+#     FetchContent_Declare(
+#         googletest
+#         URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+#     )   
+
+
+#     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+#     FetchContent_MakeAvailable(googletest)
     
 
-    enable_testing()
+#     enable_testing()
 
-    add_executable(test_version test_version.cpp)
+#     add_executable(test_version test_version.cpp)
 
-    set_target_properties(test_version PROPERTIES
-        CXX_STANDARD 14
-        CXX_STANDARD_REQUIRED ON
-    )
+#     set_target_properties(test_version PROPERTIES
+#         CXX_STANDARD 14
+#         CXX_STANDARD_REQUIRED ON
+#     )
 
-    target_link_libraries(test_version GTest::gtest_main helloworld)
+#     target_link_libraries(test_version GTest::gtest_main helloworld)
     
-    add_test(test_version test_version)
+#     add_test(test_version test_version)
 
-    include(GoogleTest)
-    gtest_discover_tests(test_version)
-endif()
+#     include(GoogleTest)
+#     gtest_discover_tests(test_version)
+# endif()
 
 
 if (MSVC)
